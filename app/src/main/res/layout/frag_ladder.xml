@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.lcp.widgets.widget.PaintView
+        android:id="@+id/ldder1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        app:bottomWidth="80dp"
+        app:height="100dp"
+        app:pcolor="#d78f8f"
+        app:topWidth="50dp"
+        app:leftRect="true"/>
+
+    <com.lcp.widgets.widget.PaintView
+        android:id="@+id/ldder2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:layout_marginLeft="-14dp"
+        android:layout_toRightOf="@id/ldder1"
+        app:bottomWidth="50dp"
+        app:height="100dp"
+        app:pcolor="#bc9747"
+        app:topWidth="80dp" />
+
+    <com.lcp.widgets.widget.PaintView
+        android:id="@+id/ldder3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:layout_marginLeft="-14dp"
+        android:layout_toRightOf="@id/ldder2"
+        app:bottomWidth="80dp"
+        app:height="100dp"
+        app:pcolor="#d78f8f"
+        app:topWidth="50dp" />
+
+    <com.lcp.widgets.widget.PaintView
+        android:id="@+id/ldder4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:layout_marginLeft="-14dp"
+        android:layout_toRightOf="@id/ldder3"
+        app:topWidth="80dp"
+        app:bottomWidth="50dp"
+        app:height="100dp"
+        app:rightRect="true"
+        app:pcolor="#bc9747"
+        />
+</RelativeLayout>

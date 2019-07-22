@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Card">
+        <attr name="size" format="dimension|reference" />
+        <attr name="bgColor" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="LadderLayout">
+        <attr name="topWidth" format="dimension" />
+        <attr name="bottomWidth" format="dimension" />
+        <attr name="android:layout_height"/>
+        <attr name="height" format="dimension" />
+        <attr name="pcolor" format="color|reference" />
+        <attr name="leftRect" format="boolean" />
+        <attr name="rightRect" format="boolean" />
+    </declare-styleable>
+
+</resources>

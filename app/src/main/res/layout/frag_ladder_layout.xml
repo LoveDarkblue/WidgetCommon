@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3C4F5E">
+
+    <RelativeLayout
+        android:id="@+id/rootview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.lcp.widgets.widget.LadderLayout
+            android:id="@+id/ldder1"
+            style="@style/ladder"
+            android:layout_marginLeft="20dp"
+            app:bottomWidth="90dp"
+            app:leftRect="true"
+            app:topWidth="60dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/ic1"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="西湖风光"
+                android:textColor="#333333" />
+        </com.lcp.widgets.widget.LadderLayout>
+
+        <com.lcp.widgets.widget.LadderLayout
+            android:id="@+id/ldder2"
+            style="@style/ladder"
+            android:layout_marginLeft="-14dp"
+            android:layout_toRightOf="@id/ldder1"
+            app:bottomWidth="60dp"
+            app:topWidth="90dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/ic2"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="印象杭州"
+                android:textColor="#333333"
+                android:textSize="12sp" />
+        </com.lcp.widgets.widget.LadderLayout>
+
+        <com.lcp.widgets.widget.LadderLayout
+            android:id="@+id/ldder3"
+            style="@style/ladder"
+            android:layout_marginLeft="-14dp"
+            android:layout_toRightOf="@id/ldder2"
+            app:bottomWidth="80dp"
+            app:topWidth="50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/ic3"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="世界时钟"
+                android:textColor="#333333"
+                android:textSize="12sp" />
+        </com.lcp.widgets.widget.LadderLayout>
+
+        <com.lcp.widgets.widget.LadderLayout
+            android:id="@+id/ldder4"
+            style="@style/ladder"
+            android:layout_marginLeft="-14dp"
+            android:layout_toRightOf="@id/ldder3"
+            app:bottomWidth="50dp"
+            app:rightRect="true"
+            app:topWidth="80dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/ic4"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="天气"
+                android:textColor="#333333"
+                android:textSize="12sp" />
+        </com.lcp.widgets.widget.LadderLayout>
+    </RelativeLayout>
+</RelativeLayout>
