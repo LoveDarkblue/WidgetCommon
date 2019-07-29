@@ -9,6 +9,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Region;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.lcp.widgets.BuildConfig;
 import com.lcp.widgets.R;
 
 
@@ -34,8 +36,10 @@ public class LadderLayout extends RelativeLayout {
     private final int strokWidth = 20;
     private boolean leftRect;
     private boolean rightRect;
+    private PorterDuffXfermode porterDuffXfermodeIn;
+    private PorterDuffXfermode porterDuffXfermodeOut;
 
-    public void setViewSize(int topWidth,int bottomWidth,int mHeight) {
+    public void setViewSize(int topWidth, int bottomWidth, int mHeight) {
         this.topWidth = topWidth;
         this.bottomWidth = bottomWidth;
         this.mHeight = mHeight;
@@ -96,7 +100,8 @@ public class LadderLayout extends RelativeLayout {
     }
 
     {
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+        porterDuffXfermodeIn = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
+        porterDuffXfermodeOut = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
         setWillNotDraw(false);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);//设置STROKE才能设置成圆角
         paint.setStrokeWidth(strokWidth);
@@ -117,8 +122,8 @@ public class LadderLayout extends RelativeLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int measuredWidth = Math.max(topWidth, bottomWidth) ;
-        int measuredHeight = mHeight ;
+        int measuredWidth = Math.max(topWidth, bottomWidth);
+        int measuredHeight = mHeight;
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
             View childView = getChildAt(i);
@@ -142,6 +147,14 @@ public class LadderLayout extends RelativeLayout {
     public void draw(Canvas canvas) {
         int saved = canvas.saveLayer(null, null, Canvas.ALL_SAVE_FLAG);
         super.draw(canvas);
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1) {
+            paint.setXfermode(porterDuffXfermodeIn);
+        } else {
+            paint.setXfermode(porterDuffXfermodeOut);
+            if (!mDrawPath.isInverseFillType()) {
+                mDrawPath.toggleInverseFillType();
+            }
+        }
         canvas.drawPath(mDrawPath, paint);
         canvas.restoreToCount(saved);
     }
@@ -157,6 +170,9 @@ public class LadderLayout extends RelativeLayout {
     }
 
     public boolean isInRect(MotionEvent event) {
+        if (mDrawPath.isInverseFillType()) {
+            mDrawPath.toggleInverseFillType();
+        }
         RectF rectF = new RectF();
         mDrawPath.computeBounds(rectF, true);
         mRegion.setPath(mDrawPath, new Region((int) rectF.left, (int) rectF.top, (int) rectF.right, (int) rectF.bottom));
